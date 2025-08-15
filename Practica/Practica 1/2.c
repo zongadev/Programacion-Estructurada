@@ -1,36 +1,36 @@
 #include <stdio.h>
-void operar(float a,float b,char signo){
-	if(signo == '+'){
-		printf(suma(a,b));
-	}
-	if(signo =='-'){
-		printf(resta(a,b));
-	}
-	if(signo =='*'){
-		printf(multiplicacion(a,b));
-	}
-	if(signo =='/'){
-		printf(division(a,b));
-	}
-}
+
 	
-	float suma(float a, float b){
+float suma(float a, float b){
 		return a+b;
 	}
 		
-		float resta(float a, float b){
-			return a-b;
-		}	
-			
-			float multiplicacion(float a, float b){
-				return a*b;
+float resta(float a, float b){
+	return a-b;
+}	
+float multiplicacion(float a, float b){
+	return a*b;
 			}
 				
-				float division(float a, float b){
-					return a/b;
-				}
+float division(float a, float b){
+	return a/b;
+	}
 					
 
+void operar(float a,float b,char signo){
+	if(signo == '+'){
+		printf("%.2f",suma(a,b));
+	}
+	if(signo =='-'){
+		printf("%.2f",resta(a,b));
+	}
+	if(signo =='*'){
+		printf("%.2f",multiplicacion(a,b));
+		}
+	if(signo =='/'){
+		printf("%.2f",division(a,b));
+		}
+}
 
 int main() {
 	char signo;
