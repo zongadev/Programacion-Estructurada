@@ -1,0 +1,4 @@
+Informatica,12534
+Fisica,7777
+Ingles,889
+Algebra,1111

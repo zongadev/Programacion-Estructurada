@@ -1,0 +1,8 @@
+PRODUCTO                      STOCK     STMIN     STMAX     PRECIO    REPONER   IMPORTE   
+------------------------------------------------------------------------------------------
+Huevo blanco Gde. 6Uni        150       180       250       675.00    100       67500.00  
+Gaseosa PEPSI Light 1.5L      300       320       500       242.55    200       48510.00  
+Azucar LEDESMA 1Kg            300       350       600       726.55    300       217965.00 
+
+
+Total a pagar por reposicion: 333975.00
