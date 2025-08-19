@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main() {
-	char texto[100];
+void leer(char texto[100]){
 	char letra;
 	int i =0;
 	printf("Ingrese una oracion de 100 letras como maximo \n");
@@ -15,6 +14,30 @@ int main() {
 		}
 	}
 	
+}
+void reemplazar(char t[100]){
+		char c,n;
+		int i=0;
+		printf("Ingrese el caracter a reemplazar: ");
+		c=getchar();
+		printf("\n Ingrese el caracter nuevo: ");
+		getchar();
+		n=getchar();
+		while(t[i]!='\0'){
+			if(t[i]==c){
+				t[i]=n;
+		}
+			i++;
+		}
+		printf("Reemplazado: \n %s",t);
+	}
+
+int main() {
+	char texto[100];
+	leer(texto);
+	reemplazar(texto);
+	return 0;
+}
 	/*
 	while(i!=100 && (letra=getchar())!= '\n'){
 	texto[i]=letra;
@@ -23,7 +46,5 @@ int main() {
 	texto[i]='\0';
 	
 	*/
-	printf(texto);
-	return 0;
-}
+	
 
