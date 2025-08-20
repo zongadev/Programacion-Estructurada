@@ -23,25 +23,26 @@ void imprimirText(char text[T]){
 	
 void normalizar(char text[T], int len){
 	char temp;
-	if(text[0]>=97 || text[0]<=122){
+	int newlen;
+	if(text[0]>=97 && text[0]<=122){
 		text[0]=text[0]-32;
 	}
 	for(int i=0; text[i]!= '\0';i++){ //el ciclo I es el que recorre la palabra
-		printf("i:[%c]",text[i]);
-		for(int j = i; text[j]==' '; j++){ //el ciclo J es el que itera dentro de los espacios
-			printf("j:[%c]",text[j]);
+		for(int j = i+1; text[j]==' '; j++){ //el ciclo J es el que itera dentro de los espacios
 			if(j>0){
 				
-				for(int k =i+1; text[i]!='\0';k++){//el ciclo K es para desplazar
-					printf("k:[%c]",text[k]);
+				for(int k =j; text[k]!='\0';k++){//el ciclo K es para desplazar
 					text[k]= text[k+1];
-					k++;
 				}
-				
 		}
-	}
+			}
+	
+	if(text[i+1]=='\0' && text[i]!='.'){
+		text[i+1]='.';
+		text[i+2]='\0';
+}}
 }
-}
+	
 int main(){
 	char text[T];
 	int l;
