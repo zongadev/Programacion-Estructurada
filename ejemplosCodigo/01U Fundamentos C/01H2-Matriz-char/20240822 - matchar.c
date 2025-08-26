@@ -18,6 +18,7 @@ void cargarMatC(char mat[F][C]){
 		mat[f][c]='\0';
 		f++;
 		c=0;
+				
 		if (f<F-1){
 			printf("[%d]: ",f);
 			aux=getchar();

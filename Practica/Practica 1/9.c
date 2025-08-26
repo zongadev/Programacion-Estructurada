@@ -16,30 +16,41 @@ void imprimirMatText(char mat[F][C]){
 
 void cargarMatText(char mat[F][C]){
 	char c;
-	
-	int j;
-	for(int i=0; i<F-1; i++){
-		j=0;
-		while(j<C-1 && (c=getchar())!='\n'){
+	int i=0;
+	int j=0;
+	printf("Ingrese los valroes de la matris \n");
+	printf("\t [%d]: ",i);
+	c=getchar();
+	while(c!='\n' && i<F-1){
+		while(j<C-1&& c!='\n'){
 			mat[i][j]=c;
+			c=getchar();
 			j++;
 		}
-		for(j;j<C;j++){//como el anterior frena uno antes de C, si se pasa truncaria y pondira \0
-			mat[i][j]='\0';
+		mat[i][j]='\0';
+		i++;
+		j=0;
+		if(i<F-1){
+			printf("\t [%d]: ",i);
+			c=getchar();
 		}
 	}
-	mat[F-1][0]='\0';
+	mat[i][0]='\0';
 }
 	
 void ordenarMatText(char mat[F][C]){
 	char aux[C];
+	
 	for(int i=0;i<F-1;i++){
-		if(mat[i+1][0]!='\0' && strcmp(mat[i],mat[i+1])>0){
-			strcpy(aux,mat[i]);
-			strcpy(mat[i],mat[i+1]);
-			strcpy(mat[i+1],aux);
+		for(int j = i+1;j<F; j++){
+			if(mat[j][0]!='\0' && strcmp(mat[i],mat[j])>0){
+				strcpy(aux,mat[i]);
+				strcpy(mat[i],mat[j]);
+				strcpy(mat[j],aux);
+			}
 		}
-	}//quedo sin andar el ordenar
+		
+	}
 }
 
 int main(){
