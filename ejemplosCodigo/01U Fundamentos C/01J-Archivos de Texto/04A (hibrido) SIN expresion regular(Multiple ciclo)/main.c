@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 /**
 
   \brief Lectura de un archivo csv que contiene campos con nombres (simples o compuestos)
@@ -65,6 +66,6 @@ int main()
     }
 
     fclose(arch);                   /** cerrar el archivo arch" */
-
+	printf("%d",strcmp("Bsta","aleta"));
     return 0;
 }

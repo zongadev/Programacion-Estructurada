@@ -26,7 +26,7 @@ void cargarMatText(char mat[F][C]){
 			mat[i][j]=c;
 			c=getchar();
 			j++;
-		}
+	}
 		mat[i][j]='\0';
 		i++;
 		j=0;
@@ -36,7 +36,7 @@ void cargarMatText(char mat[F][C]){
 		}
 	}
 	mat[i][0]='\0';
-}
+}	
 	
 void ordenarMatText(char mat[F][C]){
 	char aux[C];
@@ -54,7 +54,7 @@ void ordenarMatText(char mat[F][C]){
 }
 
 int main(){
-	char matI[F][C];
+	char matI[F][C]= {0};
 	cargarMatText(matI);
 	imprimirMatText(matI);
 	ordenarMatText(matI);
