@@ -2,8 +2,6 @@
 02 fgets leer archivo txt
 */
 
-#include <stdio.h>
-#include <stdlib.h>
 /**
     Prototipo de la función fgets:
         *fgets(char *str, int n, FILE *stream)
@@ -33,7 +31,7 @@ int main()
     int r;                          /** en r guardo lo que retorna fgets*/
 	int res = 0;
 	
-    FILE* arch;                     /** Declaro la variable arch com tipo de dato FILE*  */
+    FILE* arch;                   	  /** Declaro la variable arch com tipo de dato FILE*  */
     arch=fopen("arch.txt","r");     /** Abrir el archivo "arch.txt" de lectura. En arch queda el puntero que refrerencia al archivo*/
 
     if(arch!=NULL){                  /** Si el arch contiene NULL es porque el archivo no pudo ser abierto*/

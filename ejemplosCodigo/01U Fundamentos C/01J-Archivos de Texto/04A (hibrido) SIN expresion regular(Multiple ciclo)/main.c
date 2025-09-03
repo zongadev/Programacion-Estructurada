@@ -60,7 +60,7 @@ int main()
         r=fscanf(arch,"%d,%lf\n",&obj,&sAnu);           /** LEER archivo, la parte del registro que falta */
         //printf("%d,%s,%d,%6.2lf\n",cod,nom,obj,sAnu);   /** IMPRIMIR el contenido de las variables quevrepresentan el contenido del registro del archivo*/
 		printf("%6d%12s%8d%8.2lf\n",cod,nom,obj,sAnu);   /** IMPRIMIR el contenido de las variables quevrepresentan el contenido del registro del archivo*/
-		
+	
 /** PRIMERA */
         r=fscanf(arch,"%d,",&cod);      /** (1°) LEER archivo. (al final del 1° while)  */
     }
