@@ -2,31 +2,58 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define C 25
+#define C 8
 #define F 25
 
-void imprimirMatText(char mat[F][C]){
+void imprimirMatText(int mat[F][C]){
 	printf("Matriz: \n");
-	for(int i =0; i<F;i++){
-		printf("%s\n",mat[i]);
+	int i=0,j=0;
+	while(i<F-1 && mat[i][j]!=999){
+		while(j<C && mat[i][j]!=999){
+			printf("%d,",mat[i][j]);
+			j++;
+		}
+		j=0;
+		i++;
+		printf("\n");
 	}
 }
 
+void completarDiferenciaGoles(int mat[F][C]){
+	int i=0,j=0;
+	while(i<F-1 && mat[i][j]!=999){
+		mat[i][C-1]= mat[i][5] - mat[i][6];
+		i++;
+	}
+}
 void cargarMatNumDeArch(int mat[F][C], char archivo[]){
 	int i=0,j=0,r;
 	FILE* arch;
 	int num;
 	arch = fopen(archivo,"r");
-	r=fscanf(arch,"%d,",num);
-	while((r!=EoF) && i<F && j<C){
-		mat[i][j]=num;
-		j++;
-		if()
+	if(arch==NULL)                    
+		return;         
+	r=fscanf(arch,"%d,",&num);
+	while((r!=EOF) && i<F){
+		while(j<C-1 && r!=EOF){
+			mat[i][j]=num;
+			j++;
+			if(j<C-1){
+				r=fscanf(arch,"%d,",&num);
+			}
+		}
+		j=0;
+		i++;
+		r=fscanf(arch,"%d,",&num);
 	}
-	imprimirMatText(mat);
+	mat[i][0]=999;
+	completarDiferenciaGoles(mat);
 }
 
 int main(){
 	char archivo[] = "puntos.txt";
+	int matI[F][C] = {0};
+	cargarMatNumDeArch(matI,archivo);
+	imprimirMatText(matI);
 	return 0;
 }
