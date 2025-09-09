@@ -18,7 +18,6 @@ marianotrigila@gmail.com
 */
 # define MASK 123 
 	
-	
 void convert(char* var,char* ope ,int num);
 void convertU(char* var,char* ope ,unsigned int num);
 

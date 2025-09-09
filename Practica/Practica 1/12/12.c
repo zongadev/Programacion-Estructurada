@@ -17,6 +17,7 @@ void imprimirMatText(int mat[F][C]){
 		i++;
 		printf("\n");
 	}
+	printf("\n");
 }
 
 void completarDiferenciaGoles(int mat[F][C]){
@@ -51,6 +52,7 @@ void cargarMatNumDeArch(int mat[F][C], char archivo[]){
 }
 
 int main(){
+	int matI[F][C] = {0};
 	char archivo[] = "puntos.txt";
 	int matI[F][C] = {0};
 	cargarMatNumDeArch(matI,archivo);
