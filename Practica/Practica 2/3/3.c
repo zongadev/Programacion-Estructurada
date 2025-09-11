@@ -43,6 +43,10 @@ void mostrar(equipo mat[T], char archivo[]){
 		printf("\n%s \t%d\t%d\t%d\t%d\t%d\n",mat[i].nombre,mat[i].PG,mat[i].PP,mat[i].PE,mat[i].GF,mat[i].GC);
 		i++;
 	}
+/*	Hay que ordenarlos en base a ciertas cosas, podes o llamar una matriz que te de un orden para imprimirlos 
+	O podes hacer el filtrado con bubbel e ir imprimiendo al final despues de los dos whiles. (esto ultimo es lo mejor)
+	*/
+	
 }
 
 int main(){
