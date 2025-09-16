@@ -28,7 +28,6 @@ float distanciaMinima(punto pa, punto pb){
 void DMConsecutivos(punto mat[C]){
 	int i =0, j=1;
 	while(mat[j].x != TERM){
-
 		printf("\n Distancia minima entre los puntos (%d,%d) y (%d,%d) es: %f"
 			   ,mat[i].x,mat[i].y,mat[j].x,mat[j].y,distanciaMinima(mat[i],mat[j]));
 		i++;

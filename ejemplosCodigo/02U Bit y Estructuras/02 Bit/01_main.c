@@ -106,7 +106,7 @@ void convert(char* var,char* ope ,int num)
 
     unsigned int mask=1<<31;        /** coloca el uno en el bit m�s significativo (a la izquierda)*/
     int i;
-    printf("\n%2s= %6s =%12d : ",var,ope,num);
+    printf("ddddddddddddd\n%2s= %6s =%12d : ",var,ope,num);
     for (i=0;i<32;i++)
     {
         printf("%d",(num&(mask>>i)  ) !=0);
