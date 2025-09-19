@@ -9,8 +9,8 @@
 
 void CASO01(){
 	printf("CASO 01\n");
+	int i;
 	printf("Ejemplo Punteros_01 de la hoja de calculo \n");
-	
 	// https://docs.google.com/spreadsheets/d/1HwOD_lkcWdPO4Cf3FQVFDbs0E-yc8DdrPEOwVGMgtkA/edit#gid=0
 	char car = 'A';
 		
@@ -128,10 +128,10 @@ void CASO03(){
 }
 
 int main(){		
-	//CASO01();
-	//CASO02();
-	//CASO04();
-	//CASO03();
+	CASO01();
+	CASO02();
+	CASO04();
+	CASO03();
 	CASO05();
 
 	// falta pasar este ejemplo a un caso por separado.
