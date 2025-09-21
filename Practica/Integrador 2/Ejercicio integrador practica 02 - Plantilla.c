@@ -46,7 +46,8 @@ int main(){
 	t_contenido contenido[1];
 	cargarDatosDeArch("productos2.txt",contenido);
 	imprimirTabla(contenido);
-    
+    ordenarPorProd(contenido);
+	imprimirTablaConFiltro(contenido,100,250);
     return res;
 }
 
@@ -81,20 +82,42 @@ void imprimirTabla(t_contenido content[1]){
 	
 	printf("%5s\t%5s\t\t%5s\n",content[0].titulo.stock,content[0].titulo.prec,content[0].titulo.prod);
 	while(i<F && content[0].dato[i].precio !=-1){
-		printf("%6d\t%12.2f %s\n", content[0].dato[i].stock, content[0].dato[i].precio,content[0].dato[i].nomprod);
+		printf("%6d\t%8.2f\t %s\n", content[0].dato[i].stock, content[0].dato[i].precio,content[0].dato[i].nomprod);
 		i++;
 	}
 	
 }
 
 void ordenarPorProd(t_contenido content[1]){
-	// CODIFICAR AQUI
-	
-	
+	int i=0;
+	int j=i+1;
+	t_dato aux;
+	while (content[0].dato[i].precio !=-1){
+		while(content[0].dato[j].precio !=-1){
+			if(strcmp(content[0].dato[i].nomprod,content[0].dato[j].nomprod)<0){
+				aux = content[0].dato[i];
+				content[0].dato[i] = content[0].dato[j];
+				content[0].dato[j] = aux;
+			}
+			j++;
+		}
+		i++;
+		j=0;
+	}
+	printf("\n===========================\n");
+	imprimirTabla(content);
 }
 
 void imprimirTablaConFiltro(t_contenido content[1],int stinf,int stsup){
-	// CODIFICAR AQUI
+	int i=0;
+	printf("\n =======================\n");
+	printf("%5s\t%5s\t\t%5s\n",content[0].titulo.stock,content[0].titulo.prec,content[0].titulo.prod);
+	while(i<F && content[0].dato[i].precio !=-1){
+		if(content[0].dato[i].stock >=stinf && content[0].dato[i].stock<=stsup){
+			printf("%6d\t%8.2f\t %s\n", content[0].dato[i].stock, content[0].dato[i].precio,content[0].dato[i].nomprod);
+		}	
+		i++;
+	}
 	
 }
 
