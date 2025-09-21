@@ -17,22 +17,22 @@ de un rango determinado.
 
 struct s_titu{
     char prod[C];
-	// COMPLETAR ESTRUCTURA AQUI ...
-	
+	char stock[C];
+	char prec[C];
 };
 typedef struct s_titu t_titu;
 
 struct s_dato{
     char nomprod[C];
-	// COMPLETAR ESTRUCTURA AQUI ...
+	int stock;
+	float precio;
 	
 };
 typedef struct s_dato t_dato;
 
 struct s_contenido{
     t_titu titulo;
-	// COMPLETAR ESTRUCTURA AQUI ...
-	
+	t_dato dato[F];
 };
 typedef struct s_contenido t_contenido;
 
@@ -43,22 +43,47 @@ void imprimirTablaConFiltro(t_contenido [],int,int);
 
 int main(){
     int res=0;
-	// CODIFICAR AQUI
-	
+	t_contenido contenido[1];
+	cargarDatosDeArch("productos2.txt",contenido);
+	imprimirTabla(contenido);
     
     return res;
 }
 
 int cargarDatosDeArch(char nom[],t_contenido content[1]){
     int res=0;
-	// CODIFICAR AQUI
-	
+	int r,i=0,j=0;
+	char c;
+	FILE* arch = fopen(nom,"r");
+	if (arch != NULL) {
+		r= (int) fscanf(arch,"%49[^,],%49[^,],%49[^,\n]\n",content[0].titulo.prod,content[0].titulo.stock,content[0].titulo.prec);
+		c=getc(arch);
+		while (i<F-1 && c!=EOF) {
+			while(c!= ',' && c!=EOF && j<C-1){
+				content[0].dato[i].nomprod[j]=c;
+				j++;
+				c=getc(arch);
+			}
+			content[0].dato[i].nomprod[j]='\0';
+			j=0;
+			r=fscanf(arch,"%d,%f\n",&content[0].dato[i].stock,&content[0].dato[i].precio);
+			i++;
+			c=getc(arch);
+		}
+		content[0].dato[i].precio=-1;
+	}
     return res;
 }
+	
 
 void imprimirTabla(t_contenido content[1]){
-	// CODIFICAR AQUI
+	int i=0;
 	
+	printf("%5s\t%5s\t\t%5s\n",content[0].titulo.stock,content[0].titulo.prec,content[0].titulo.prod);
+	while(i<F && content[0].dato[i].precio !=-1){
+		printf("%6d\t%12.2f %s\n", content[0].dato[i].stock, content[0].dato[i].precio,content[0].dato[i].nomprod);
+		i++;
+	}
 	
 }
 
