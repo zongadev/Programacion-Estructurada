@@ -28,6 +28,7 @@ void cargaAlumnos(char arcAlu[]){
 		
 		printf("\n\tIngrese el legajo del alumno: \t");
 		scanf("%d",&legajo);
+		getchar();
 		if(legajo !=0){
 			printf("\n\tIngrese el nombre: \t");
 			while((c=getchar()) != '\n' && j<100-1){
@@ -62,15 +63,15 @@ void cargaAlumnos(char arcAlu[]){
 	fclose(arch);
 }
 
-void cargarMaterias(char arch[]){
+void cargarMaterias(char archivo[]){
 	int i=0,cod,j=0;
 	char nombre[100];
 	char c;
-	FILE* arch=fopen(arch,"w");
+	FILE* arch=fopen(archivo,"w");
 	printf("Ingrese las materias: ");
 	while(i<NA &&cod !=0){
 		
-		printf("\n\tIngrese el codigo de la materia: \t";
+		printf("\n\tIngrese el codigo de la materia: \t");
 		scanf("%d",&cod);
 		if(cod !=0){
 			printf("\n\tIngrese el nombre de la materia: \t");
@@ -90,10 +91,37 @@ void cargarMaterias(char arch[]){
 	fclose(arch);
 	
 }
-int main(){
+void cargaAlumnosMat(t_alumno mat[NA], char archivo[]){
+	FILE* arch= fopen(archivo,"r");
+	t_alumno aux;
+	char c;
+	int i=0,j=0,r;
+	r=fscanf(arch,"%100[^,],%d",aux.nombre,&aux.legajo);
+	c=fgetc(arch);
+	while(r!=EOF && c!='\n' && i<NA){
+		while(j<30&& c!='\n'){
+			r=fscanf(arch,"%d",&aux.materias[j]);
+			c=fgetc(arch);
+			if(c!='\n'){
+				printf("%d",aux.materias[j]);
+				j++;
+			}
+		}
+		mat[i]=aux;
+		printf("%s,%d \n",aux.nombre,aux.legajo);
+		i++;
+		r=fscanf(arch,"%100[^,],%d",aux.nombre,&aux.legajo);
+		c=fgetc(arch);
+	}
+	
+}
+
+	int main(){
 	char archAlu[]="alumnos.txt", archMat[]="materias.txt";
+	
 	t_alumno alumnosArr[NA];
 	cargaAlumnos(archAlu);
 	cargarMaterias(archMat);
+	cargaAlumnosMat(alumnosArr,archAlu);
 	return 0;
 }
