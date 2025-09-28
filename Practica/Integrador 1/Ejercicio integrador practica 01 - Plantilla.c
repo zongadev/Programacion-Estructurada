@@ -8,29 +8,37 @@ Cargar los titulos y los datos en arreglos estaticos,
 imprimir una tabla incluyendo titulos y datos, 
 ordenar los productos por stock de mayor a menor, 
 imprimir nuevamente la tabla con los datos ordenados.
+
+Nota gonza: Esta hecho con el fgetc fuera del while pq pense que tenia un error
+pero no, fue otra pajereada.
 */
 #include<stdio.h>
 #include<string.h>
 #define F 100
 #define C 50
+#define TERM -1
 int cargarDatosDeArch(char [],char [F][C],int [],float []);
 int cargarTitulosDeArch(char [],char[F][C]);
 void ordenarPorStock(char [F][C],int[],float[]);
 void imprimirTabla(char[F][C],char[F][C],int[],float[]);
 int main(){
 	int retorno=0;
-    char titulos[F][C] = {'\0'} , nom[F][C];
+    char titulos[F][C] = {'\0'} , nom[F][C]={'\0'};
 	int stock[F];
 	float precio[F];
 	cargarTitulosDeArch("titulo.txt",titulos);
 	cargarDatosDeArch("productos.txt",nom,stock,precio);
 	imprimirTabla(titulos,nom,stock,precio);
+	ordenarPorStock(nom,stock,precio);
+	printf("\n\n=============== Stock ordenado ===================\n\n");
+	imprimirTabla(titulos,nom,stock,precio);
+	
 	return retorno;
 }
 
 
 int cargarDatosDeArch(char nom[],char prod[F][C],int st[],float p[]){
-    int res=0, i=0,j=0,r=0;
+    int res=0, i=0,j=0;
 	char c;
 	FILE* arch;
 	arch = fopen(nom,"r");
@@ -41,9 +49,9 @@ int cargarDatosDeArch(char nom[],char prod[F][C],int st[],float p[]){
 			c=fgetc(arch);
 			j++;
 		}
-		prod[i][j]='\0';
+		/*prod[i][j]='\0';*/
 		j=0;
-		r=fscanf(arch,"%d,%f\n",&st[i],&p[i]);
+		fscanf(arch,"%d,%f\n",&st[i],&p[i]);
 		i++;
 		c=fgetc(arch);
 		while(c!=EOF){
@@ -53,14 +61,16 @@ int cargarDatosDeArch(char nom[],char prod[F][C],int st[],float p[]){
 				j++;
 				
 			}
-			prod[i][j]='\0';
+			/*prod[i][j]='\0';*/
 			
 			j=0;
 			
-			r=fscanf(arch,"%d,%f\n",&st[i],&p[i]);
+			fscanf(arch,"%d,%f\n",&st[i],&p[i]);
 			i++;
 			c=fgetc(arch);
 		}
+		st[i]=TERM;
+		p[i]=TERM;
 	}
     return res;
 }
@@ -81,7 +91,31 @@ int cargarTitulosDeArch(char nom[],char tit[F][C]){
     return res;
 }
 void ordenarPorStock(char prod[F][C],int st[],float p[]){
-	// CODIFICAR AQUI
+	int i=0, j=0,auxs;
+	float auxf;
+	char aux[C];
+	while (st[i]!= TERM){
+		while(st[j]!=TERM){
+			if(st[i]<st[j]){
+				auxs=st[i];
+				auxf=p[i];
+				strcpy(aux,prod[i]);
+				
+				st[i]=st[j];
+				p[i]=p[j];
+				strcpy(prod[i],prod[j]);
+				
+				st[j]=auxs;
+				p[j]=auxf;
+				strcpy(prod[j],aux);
+				
+				
+			}
+			j++;
+		}
+		i++;
+		j=0;
+	}
 	
 }
 void imprimirTabla(char tit[F][C],char prod[F][C],int st[],float p[]){
