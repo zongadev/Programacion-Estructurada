@@ -18,8 +18,39 @@ void arrR(char* arr){
 
 }
 */
+
+int sumatoria(int n){
+	if(n==0){
+		return 0;
+	}
+	return n+sumatoria(n-1);
+}
+	
+/*int divR(int n, int j){*/
+/*	if(n<j){*/
+/*		return n;*/
+/*	}*/
+/*	return divR(n-j,j);*/
+/*}*/
+	
+	int divR(int n, int j){
+		if(n>=j){
+			return divR(n-j,j);
+		}
+		return n;
+	}
+	
+int div(int n, int j){
+	if(n>=j){
+		return 1+div(n-j,j);
+	}else{
+		return 0;
+	}
+}
 int main(){
-	arrR("holas que talss");
+	printf("%d",sumatoria(5));
+	printf("\n %d",divR(16,5));
+	printf("\n %d",div(15,5));
 	return 0;
 }
 
