@@ -8,6 +8,7 @@ struct s_lista{
 };
 typedef struct s_lista* p_lista;
 
+
 void cargarCabeza(p_lista *p){
 	int aux;
 	printf("Ingrese numeros: \n");
