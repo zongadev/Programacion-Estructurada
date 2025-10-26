@@ -26,13 +26,13 @@ void pushS(s_per* p, p_per pe){
 	(*p) = pe;
 }
 
-p_num popI(p_num *p){
+int popI(p_num *p){
 	if ((*p) != NULL) {
 		p_num aux = (*p);
 		int valor = aux->num;
 		free(aux);
 		(*p)=(*p)->sig;
-		return aux;
+		return valor;
 	}
 }
 
