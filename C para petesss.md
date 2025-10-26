@@ -40,5 +40,6 @@ Siempre tenes que agarrar la primera linea del archivo fuera del while, no impor
 
 13- pongan el if(arch!=NULL)
 
+14- Uno pasa por parametros VALORES, por eso mismo si uno quiere modificar una lista enlazada, no puede pasar el puntero al primer elemento, pq lo estas pasando como una COPIA. Tenes que pasar un puntero a el puntero del primer elemento, asi, el puntero, que esta un nivel mas adentro, no es una copia y puede ser modificado
 
 
