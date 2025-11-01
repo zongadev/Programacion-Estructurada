@@ -11,6 +11,13 @@ char *s = "Hola";
 /*Esto guarda el primer lugar del string.
     *(s+1) es el segundo y asi.*/
 	
+
+/*--------------------------PILAS--------------------------------*/
+void push(t_nodo *p,t_dato n){
+	t_nodo nuevo = malloc(sizeof(t_nodo));
+	nuevo->sig=(*p);
+	*p = nuevo;
+}
 /*-----------------COLA CON DOS PUNTEROS-----------------------------*/
 		
 		/*Usamos los siguientes structs*/
