@@ -73,6 +73,7 @@ void crear(p_num * lis){
 		scanf("%d",&n);
 	}
 }
+	
 int main() {
 	p_num lista= NULL;
 	crear(&lista);

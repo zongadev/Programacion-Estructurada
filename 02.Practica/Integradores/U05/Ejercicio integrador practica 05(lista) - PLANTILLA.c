@@ -1,5 +1,5 @@
 /**
-Se carga una lista desde un archivo
+Se carga una cola desde un archivo
 Elimina de la lista aquellos productos cuyo stock esté entre 
 200 y 300 (extremos inclusive)
 */

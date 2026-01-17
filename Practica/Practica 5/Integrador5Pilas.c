@@ -21,13 +21,14 @@ struct s_nodo{
 typedef struct s_nodo* t_nodo;
 
 void push(t_nodo *p,t_dato n){
-	t_nodo nuevo = malloc(sizeof(t_nodo));
+	t_nodo nuevo = malloc(sizeof(t_dato));
+	nuevo->dato=n;
 	nuevo->sig=(*p);
 	*p = nuevo;
 }
 
 t_dato pop(t_nodo *p){
-	t_dato dato;
+	t_dato dato={0};
 	if((*p)!=NULL){
 		dato = (*p)->dato;
 		t_nodo aux =(*p);
@@ -66,29 +67,32 @@ void cargarPila(t_nodo* p,char* nomArch){
 	fclose(arch);
 }
 
-
-
-
-
-void eliminar(t_nodo *p,int sinf, int ssup){
-	t_nodo anterior = NULL;
-	t_nodo actual = (*p);
-	while(actual != NULL){
-		if((actual->dato.stock)> ssup || (actual->dato.stock)< sinf){
-			if(anterior ==NULL){
-				(*p)=actual->sig; /*Borra la cabeza*/
-				free(actual);
-			}else{
-				actual=actual->sig;
-				anterior = actual;
-			}
-			anterior->sig=actual->sig;
-			free(actual);
-			actual = anterior->sig;
-		}
-		anterior=actual;
-		actual = actual->sig;
-	}
+void eliminar(t_nodo *pp,int sinf, int ssup){
+/*	t_nodo pila2=NULL;*/
+/*	t_dato valor;*/
+/*	while((*p)!= NULL){*/
+/*		valor = pop(p);*/
+/*		if(valor.stock<sinf || valor.stock>ssup){*/
+/*			free(valor.nomprod);*/
+/*		}else{*/
+/*			push(&pila2,valor);*/
+/*		}*/
+/*	}*/
+/*	while(pila2 != NULL){*/
+/*		push(p,pop(&pila2));*/
+/*	}*/ 
+	while (*pp) {
+	t_nodo nodo = *pp;
+	if (nodo->dato.stock >= sinf && nodo->dato.stock <= ssup) {
+	// borrar este nodo
+	*pp = nodo->sig;        // desvincular
+	free(nodo->dato.nomprod);
+	free(nodo);
+} else {
+	// conservar: avanzar pp al puntero 'sig' del nodo actual
+	pp = &nodo->sig;
+}
+}
 }
 
 int main() {

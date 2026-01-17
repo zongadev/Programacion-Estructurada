@@ -1,8 +1,8 @@
 
-*((*str)+i)=c;
 (*str)[i]=c;
 
 remalloc() lleva siempre i+1
+(*str) = realloc((*str),(i+1)*(sizeof(char)));
 	
 todo lo que lleva un * antes, puede ser el inicio de una lista, es mas
 asi vienen las listas dinamicas.
@@ -10,7 +10,16 @@ asi vienen las listas dinamicas.
 char *s = "Hola";
 /*Esto guarda el primer lugar del string.
     *(s+1) es el segundo y asi.*/
-	
+
+/*---------------------------------------------------*/
+
+void agregarFinal(p_num* p,p_num nuevo){
+	if(*p == NULL){
+		*p = nuevo;
+	}else{
+		agregarFinal(&((*p)->sig),nuevo);
+	}
+}
 
 /*--------------------------PILAS--------------------------------*/
 void push(t_nodo *p,t_dato n){
@@ -18,6 +27,30 @@ void push(t_nodo *p,t_dato n){
 	nuevo->sig=(*p);
 	*p = nuevo;
 }
+t_dato pop(t_nodo *p){
+	t_dato dato={0};
+	if((*p)!=NULL){
+		dato = (*p)->dato;
+		t_nodo aux =(*p);
+		(*p)=(*p)->sig;
+		free(aux);
+	}
+	return dato;
+}
+	
+void eliminar_en_rango(t_nodo *pp, int sinf, int ssup)
+	while (*pp) {
+		t_nodo nodo = *pp;
+		if (nodo->dato.stock >= sinf && nodo->dato.stock <= ssup) {
+			// borrar este nodo
+			*pp = nodo->sig;        // desvincular
+			free(nodo->dato.nomprod);
+			free(nodo);
+		} else {
+			// conservar: avanzar pp al puntero 'sig' del nodo actual
+			pp = &nodo->sig;
+		}
+	}
 /*-----------------COLA CON DOS PUNTEROS-----------------------------*/
 		
 		/*Usamos los siguientes structs*/
